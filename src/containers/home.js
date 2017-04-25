@@ -7,6 +7,7 @@ import RecommendList from '../components/music/recommendList'
 import SwipeableViews from 'react-swipeable-views'
 import { Link } from 'react-router'
 import Beat from '../components/music/beat'
+import Paging from './paging'
 
 class App extends Component {
 
@@ -33,14 +34,12 @@ class App extends Component {
 
   componentDidMount(){
     const { dispatch } = this.props
-    dispatch(homeAPI())
+    dispatch(homeAPI(1))
   }
 
   render() {
     const { dispatch,data,login,controll} = this.props
-    const {
-      index,
-    } = this.state;
+    const { index } = this.state;
     return (
       <div className='root'>
 
@@ -68,11 +67,11 @@ class App extends Component {
           
           <SwipeableViews index={index} onChangeIndex={this.handleChangeIndex}>
             <div>
-                <Slider data={data.slider} />
-                <RecommendList data={data.recommendMusics}/>
+              <Slider data={data.slider} />
+              <RecommendList data={data.recommendMusics}/>
             </div>
             <div>
-              TODO
+              <Paging />
             </div>
             <div>
               TODO

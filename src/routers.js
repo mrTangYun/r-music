@@ -73,6 +73,13 @@ const Routes = {
 			})
 		   }
 		},
+		{ path: 'paging', 
+		  getComponent (nextState, cb) {
+			require.ensure([], (require)=>{
+				 cb(null, require('./containers/paging').default)
+			})
+		   }
+		},
 		{ path: '*',// 找不到页面跳转到首页
 		  getComponent (nextState, cb) {
 			require.ensure([], (require)=>{

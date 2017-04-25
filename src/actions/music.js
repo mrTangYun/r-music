@@ -32,22 +32,14 @@ export function currentMusicAPI(id){
 	return async dispatch => {
 		// dispatch(spin());
 	 	try{
+	 		//获取歌曲详细信息
 	 		let data = await api( Config.musicAPI.replace('HASH',id) );
+	 		console.log('hack',data)
+	 		//获取歌词信息
 	 		let krc = await api( Config.krcAPI.replace('HASH',id).replace('TIMELENGTH',data.timeLength+'000'), 'get', {}, {'Accept':'text/html'});
-		 	let krcArray = []
-		 	await krc.split('\n').map((item,index)=>{
-		 		let t = item.substring(1,item.indexOf(']'))
-		 		let tt = parseInt(t.substring(0,t.indexOf(':'))) * 60 + parseFloat(t.substring(t.indexOf(':')+1))
-		 		krcArray.push({
-		 			time: tt ,
-		 			str: item.substring(item.indexOf(']')+1),
-		 			index:index
-		 		})
-		 	})
-		 	krcArray.pop()
 
 		 	let music = {
-		 		krc:krcArray,
+		 		krc:krcList(krc), //处理后的歌词信息
 		 		hash:id,
 		 		url:data.url,
 		 		singerName:data.singerName,
@@ -55,12 +47,15 @@ export function currentMusicAPI(id){
 		 		imgUrl:data.imgUrl,
 		 		duration:data.timeLength
 		 	}
-		 	await dispatch(musicBoxAddAPI({
+
+		 	//播放列表添加歌曲
+		 	dispatch(musicBoxAddAPI({
 		 		hash:data.hash,
       			name:data.songName
-		 	}))
-		 	await dispatch(currentMusic(music));
-			await dispatch(controllAPI('play'))
+		 	}));
+		 	dispatch(currentMusic(music));
+		 	//播放（IOS系统存在问题，初次无法播放）
+			dispatch(controllAPI('play'));
 		 	// dispatch(spinHidden());
 		 }catch(error){
 			console.log('error',error);
@@ -119,5 +114,19 @@ export function changeMusicAPI(state,type){
 	}
 }
 
-
+//将文本歌词按行转换为列表，包含序号、时间、文本
+const krcList = (krc) => {
+ 	let result = []
+ 	krc.split('\n').map((item,index)=>{
+ 		let t = item.substring(1,item.indexOf(']'))
+ 		let tt = parseInt(t.substring(0,t.indexOf(':'))) * 60 + parseFloat(t.substring(t.indexOf(':')+1))
+ 		result.push({
+ 			time: tt ,
+ 			str: item.substring(item.indexOf(']')+1),
+ 			index:index
+ 		})
+ 	})
+ 	result.pop();
+ 	return result;
+}
 
