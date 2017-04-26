@@ -96,7 +96,8 @@ html,body {
     height: .6rem;
     display: block;
     margin: 6px;
-    transform: rotate(135deg); 
+    transform: rotate(135deg);
+    border-color: rgb(206, 61, 62);
 }
 .arrow-left {
 	border-top:2px solid #fff;
@@ -120,33 +121,3 @@ html,body {
 
 
 
-
-
-.example-list {
-  margin: 50px auto;
-  width: 80%;
-
-  > ol > li {
-    padding: 10px;
-  }
-}
-
-.example {
-  .iscroll-pull-down,
-  .iscroll-pull-up {
-    background-color: #40C0CB;
-    border-bottom: 2px solid #00A8C6;
-  }
-}
-
-.example-paging {
-  list-style: none;
-  color: #2B879E;
-  padding-left: 0;
-  margin-top: 0;
-  text-align: center;
-  > li {
-    padding: 2px;
-    border-bottom: 1px solid #3EC9A7;
-  }
-}

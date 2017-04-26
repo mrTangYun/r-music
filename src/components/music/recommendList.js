@@ -3,6 +3,7 @@
 */
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
+import { browserHistory } from 'react-router'
 
 /**
 * 推荐歌单列表
@@ -11,10 +12,12 @@ export default class MusicList extends Component {
   render() {
       return (
         <div >
-          <div className='recommod'>
-            <span style={{lineHeight: '1.6rem'}}>推荐歌单</span>
-            <span className='arrow-right'></span>
-          </div>
+          <Link to='/paging'>
+            <div className='recommod'>
+              <span style={{lineHeight: '1.6rem',color:'rgb(206, 61, 62)',}}>推荐歌单</span>
+              <span className='arrow-right'></span>
+            </div>
+          </Link>
           <div style={Styles.container}>
             {
               this.props.data.map((obj)=> <MusicItem data={obj}/> )
@@ -28,7 +31,7 @@ export default class MusicList extends Component {
 /**
 * 推荐歌单详情
 */
-class MusicItem extends Component { 
+class MusicItem extends Component {
   render() {
       const {specialname,imgurl,intro,playcount,specialid} = this.props.data;
       const imgurl2 = imgurl.replace('{size}',400);
@@ -58,7 +61,7 @@ const Styles = {
     alignItems:'center',
     color:'#333',
     backgroungColor: '#f0f0f0',
-    marginBottom:'1rem'
+    marginBottom:'1rem',
   },
   name:{
     display: 'flex',

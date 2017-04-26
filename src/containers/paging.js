@@ -3,11 +3,14 @@ import {render} from 'react-dom';
 //import promise from 'es6-promise';
 import union from 'lodash/union';
 import iScroll from 'iscroll/build/iscroll-probe';
-import ReactIScroll from 'reactjs-iscroll'
+import ReactIScroll from '../components/reactjs-iscroll/scripts'
 //import callApi from './fetch';
 
 import Config from '../config'
 import api from '../api'
+
+
+import RecommendList from '../components/music/recommendList'
 
 // Promise 兼容性处理
 //promise.polyfill();
@@ -24,14 +27,14 @@ export default class Paging extends Component {
 
   componentWillMount() {
     this.loadData();
+    //this.handleRefresh.bind(this)
   }
 
   //调用 IScroll refresh 后回调函数
   handleRefresh(downOrUp, callback) {
-    //真实的世界中是从后端取页面和判断是否是最后一页
     let {currentPage, lastPage} = this.state;
     if (downOrUp === 'up') { // 加载更多
-      if (currentPage === 5) {
+      if (currentPage === 50) {
         lastPage = true;
       } else {
         currentPage++;
@@ -48,57 +51,36 @@ export default class Paging extends Component {
     });
   }
 
-  async loadData(downOrUp, callback) {
-    const {currentPage} = this.state;
+  //加载数据
+  loadData(downOrUp, callback) {
+    const {currentPage,list} = this.state;
     api( Config.musicListAPI,'get',{page:currentPage,json:true} ).then(
       (musicList) => {
         this.setState({
           list: downOrUp === 'up' ? union(list, musicList.plist.list.info) : musicList.plist.list.info
         });
+        if (callback && typeof callback === 'function') {
+          callback();
+        }
+      },
+      (error) => {
+        if (callback && typeof callback === 'function') {
+          callback();
+        }
       }
     );
-
-
-
-
-    // let musicList = await api( Config.musicListAPI,'get',{page:page,json:true} );
-    // this.setState({
-    //   list: downOrUp === 'up' ? union(list, musicList.plist.list.info) : musicList.plist.list.info;
-    // });
-
-
-    // const url = `../json/person/${currentPage}.json`;
-    // callApi({url}).then(
-    //   ({json, response}) => {
-    //     //这里为了展示效果，延长1秒
-    //     setTimeout(() => {
-    //       const {list} = this.state;
-    //       this.setState({
-    //         list: downOrUp === 'up' ? union(list, json.data.list) : json.data.list
-    //       });
-    //       if (callback && typeof callback === 'function') {
-    //         callback();
-    //       }
-    //     }, 1000);
-    //   },
-    //   (error) => {
-    //     if (callback && typeof callback === 'function') {
-    //       callback();
-    //     }
-    //   });
-
   }
 
   render() {
     const {list} = this.state;
+    const options = {
+      //click: true,
+      mouseWheel: true,
+    }
     return (
-      <div>
-        <ReactIScroll iScroll={iScroll} handleRefresh={this.handleRefresh.bind(this)} className="example">
-          <ul className="example-paging">
-            {list.map((item) =>
-              <li>{item.specialname}</li>
-            )}
-          </ul>
+      <div className="container">
+        <ReactIScroll iScroll={iScroll} handleRefresh={this.handleRefresh.bind(this)}>
+          <RecommendList data={list}/>
         </ReactIScroll>
       </div>
     );

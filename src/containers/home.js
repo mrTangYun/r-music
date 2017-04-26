@@ -71,7 +71,6 @@ class App extends Component {
               <RecommendList data={data.recommendMusics}/>
             </div>
             <div>
-              <Paging />
             </div>
             <div>
               TODO
