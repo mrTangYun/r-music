@@ -85,6 +85,7 @@ const Styles = {
     height:'13.5rem',
     width:'100%',
     filter: 'blur(60px)',
+    '-webkit-filter': 'blur(60px)',
   },
   ItemContainer:{
     display: 'flex',

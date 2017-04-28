@@ -118,7 +118,7 @@ class App extends Component {
       <div className='root'  >
         
           <div  style={{zIndex:1,position:'absolute',left:0,top:0,right:0,bottom:0}}>
-            <div  style={{display: 'flex',maxWidth: '640px',widtt:'100%',height:'100%', margin: '0 auto',backgroundImage:`url(${imgU})`,backgroundSize: 'cover',filter: 'blur(3rem)',backgroundPosition: '50%'}}>
+            <div  style={{display: 'flex',maxWidth: '640px',widtt:'100%',height:'100%', margin: '0 auto',backgroundImage:`url(${imgU})`,backgroundSize: 'cover',"filter": 'blur(3rem)',"-webkit-filter": 'blur(3rem)',backgroundPosition: '50%'}}>
             </div>
             <div style={{zIndex:3,position:'absolute',left:0,top:0,right:0,bottom:0,opacity: '0.7',backgroundColor:'#555'}}></div>
           </div>

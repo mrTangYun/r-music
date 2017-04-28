@@ -14,6 +14,6 @@ module.exports = function(initialState) {
 	}
 	let store = createStoreWithMiddleware(reducers, initialState);
 	// get token from storage
-	store.dispatch(login(storage.get('token')));
+	// store.dispatch(login(storage.get('token')));
 	return store;
 };

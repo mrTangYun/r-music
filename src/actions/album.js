@@ -2,10 +2,18 @@ import Config from '../config'
 import { spin,spinHidden } from './spin'
 import api from '../api'
 export const ALBUMLIST = 'ALBUMLIST'
+export const ALBUMTOMUSICBOX = 'ALBUMTOMUSICBOX'
 
 export const albumList = (obj) =>{
 	return {
 		type: ALBUMLIST,
+		obj
+	}
+}
+
+export const albumToMusicbox = (obj) => {
+	return {
+		type: ALBUMTOMUSICBOX,
 		obj
 	}
 }
@@ -27,4 +35,7 @@ export function albumListAPI(id){
 	}
 }
 
+export function albumToMusicboxAPI(obj){
+	return dispatch => dispatch(albumToMusicbox(obj));
+}
 

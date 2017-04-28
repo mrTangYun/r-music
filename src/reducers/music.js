@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
-import { MUSICBOX,MUSICBOXADD,CURRENTMUSIC,KRC,PLAY,PAUSE,CHANGETIME,PRE,NEXT } from '../actions/music'
+import { MUSICBOX,MUSICBOXADD,CURRENTMUSIC,KRC,PLAY,PAUSE,CHANGETIME,PRE,NEXT} from '../actions/music'
+import { ALBUMTOMUSICBOX } from '../actions/album'
 
 let vo = {
   musicBox:[
@@ -40,6 +41,9 @@ function musicBox(state = vo, action) {
     case CURRENTMUSIC:// 音乐盒当前音乐
       state.currentMusic = action.obj
       return state
+    case ALBUMTOMUSICBOX://歌单=>播放列表
+      state.musicBox = action.obj;
+      return state
     default:
       return state
   }
@@ -64,7 +68,6 @@ function controll(state = 'pause', action){
       return state
   }
 }
-
 
 const Reducers = combineReducers({
   musicBox,time,controll

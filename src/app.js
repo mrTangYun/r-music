@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Spin from './components/common/Spin'
 import Message from './components/common/Message'
 import Audio from './components/music/audio'
-import { musicBoxAddAPI,currentMusicAPI,changetimeAPI,controllAPI,changeMusicAPI } from './actions/music'
+import { musicBoxAddAPI,changetimeAPI,controllAPI,changeMusicAPI } from './actions/music'
 
 class App extends Component{
 

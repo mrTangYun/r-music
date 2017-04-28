@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
+import Beat from '../components/music/beat'
 //import promise from 'es6-promise';
 import union from 'lodash/union';
 import iScroll from 'iscroll/build/iscroll-probe';
@@ -15,7 +18,7 @@ import RecommendList from '../components/music/recommendList'
 // Promise 兼容性处理
 //promise.polyfill();
 
-export default class Paging extends Component {
+class Paging extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -72,19 +75,31 @@ export default class Paging extends Component {
   }
 
   render() {
+    const { controll } = this.props
     const {list} = this.state;
-    const options = {
-      //click: true,
-      mouseWheel: true,
-    }
     return (
-      <div className="container">
-        <ReactIScroll iScroll={iScroll} handleRefresh={this.handleRefresh.bind(this)}>
-          <RecommendList data={list}/>
-        </ReactIScroll>
+      <div className='root'>
+        <div className="header" style={{backgroundColor:'#ce3d3e',color:'#fff',display:'flex',justifyContent: 'space-between',padding:'0 1rem'}}>
+          <div onClick={()=>this.back()} style={{display:'flex',flex:1}}>返回</div>
+          <div style={{display:'flex',flex:1,justifyContent: 'center'}}>歌单</div>
+          <Link style={{display:'flex',flex:1,justifyContent: 'flex-end'}}  to='/play'>
+            <Beat  beat={controll === 'play'} />
+          </Link>
+        </div>
+        <div className="container">
+          <ReactIScroll iScroll={iScroll} handleRefresh={this.handleRefresh.bind(this)}>
+            <RecommendList data={list}/>
+          </ReactIScroll>
+        </div>
       </div>
     );
   }
 }
 
-//render(<Paging/>, document.getElementById('layout'));
+function map(state) {
+  return {
+    controll:state.music.controll,
+  }
+}
+
+export default connect(map)(Paging)

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 import Nav from '../components/common/Nav'
 import Album from '../components/music/album'
-import { albumListAPI } from '../actions/album'
+import { albumListAPI,albumToMusicboxAPI } from '../actions/album'
 import Beat from '../components/music/beat'
 import { musicBoxAddAPI,currentMusicAPI,changetimeAPI,controllAPI } from '../actions/music'
 

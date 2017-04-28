@@ -99,7 +99,12 @@ module.exports = function (options){
                     target: "http://m.kugou.com",
                     changeOrigin: true,
                     pathRewrite: {"^/kugou" : ""}
-                }
+                },
+                "/mobilecdn": {
+                    target: "http://mobilecdn.kugou.com",
+                    changeOrigin: true,
+                    pathRewrite: {"^/mobilecdn" : ""}
+                },
             }
         }
     }
