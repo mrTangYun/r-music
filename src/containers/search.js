@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Nav from '../components/common/Nav'
-import { Link } from 'react-router'
+import { Link,browserHistory } from 'react-router'
 
 import Beat from '../components/music/beat'
 
@@ -25,7 +25,6 @@ class Search extends Component {
   }
 
   searchEvt(keyword,page=1){
-    alert(1)
     const { dispatch } = this.props;
     keyword = keyword || this.refs.keyword.value
     if(keyword!=''){
@@ -42,9 +41,16 @@ class Search extends Component {
     this.refs.keyword.value = '';
   }
 
+  toPlay(hash){
+    browserHistory.push('/play/' + hash)
+  }
+
+  goHome(){
+    browserHistory.push('/')
+  }
+
   render() {
     const { dispatch,controll,search } = this.props;
-    alert(JSON.stringify(search))
     //const { searchHistory } = this.state;
     const hasResult = search.result.length > 0;
     const searchHistory = Storage.get('searchHistory') ? Storage.get('searchHistory').split(',') : []
@@ -53,10 +59,10 @@ class Search extends Component {
 
         <div className="header" style={{backgroundColor:'#ce3d3e',color:'#fff',display:'flex',justifyContent: 'space-between',padding:'0 1rem'}}>
           
-          <span onClick={()=>this.searchEvt()}>返回</span>
+          <span onClick={()=>browserHistory.goBack()}>返回</span>
           <div>
             <input placeholder="搜索音乐" ref="keyword" style={Styles.input}/>
-            <span style={{color:'#777',marginLeft:'-1.2rem'}} onClick={()=>this.clear()}>X</span>
+            <span style={{color:'#777',marginLeft:'-1.2rem'}} onClick={()=>this.clear()}>×</span>
           </div>
           <span onClick={()=>this.searchEvt()}>搜索</span>
         </div>
@@ -66,7 +72,7 @@ class Search extends Component {
         <div className="container" style={{color:'#555'}}>
           {
             search.result.length == 0 ?
-              <div>
+              <div><br />
                 热门搜索：
                 <div style={Styles.labels}>
                   {
@@ -75,7 +81,6 @@ class Search extends Component {
                     )
                   }
                 </div>
-                <hr />
                 搜索历史：
                 <div style={Styles.labels}>
                   {
@@ -89,7 +94,7 @@ class Search extends Component {
               <div style={{display:'flex',flexFlow:'column'}}>
                 {
                   search.result.map((obj) =>
-                    <div style={{padding:'0.5rem'}}>{obj.filename}</div>
+                    <div style={Styles.resultItem} onClick={()=>this.toPlay(obj.hash)}>{obj.filename}</div>
                   )
                 }
               </div>
@@ -108,23 +113,33 @@ class Search extends Component {
 
 const Styles = {
   input: {
-    width:'13rem',
+    width:'18rem',
     height: '1.6rem',
-    borderRadius:'.4rem',
+    borderRadius:'0.8rem',
     outline:'none',
     fontSize: '1.1rem',
     border: '1px solid #e5e5e5',
+    paddingLeft: '.5rem'
   },
   labels: {
     display:'flex',
     flexFlow:'row wrap',
     justifyContent:'space-around',
+    margin: '1rem 0rem',
   },
   label: {
     padding: '.5rem',
     width: '6rem',
     display: 'flex',
     justifyContent: 'center',
+    border: '1px solid #bbb',
+    borderRadius: '2rem',
+    marginTop: '.5rem',
+  },
+  resultItem: {
+    padding: '1rem',
+    borderBottom: '.03rem solid #eee',
+    margin: '0 1rem',
   }
 }
 

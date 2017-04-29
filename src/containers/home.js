@@ -1,13 +1,16 @@
 import React, { Component, PropTypes } from 'react'
+import { Link,browserHistory } from 'react-router'
 import { connect } from 'react-redux'
+
 import { homeAPI } from '../actions/home'
+
+import SwipeableViews from 'react-swipeable-views'
+
 import Slider from '../components/common/slider'
 import Nav from '../components/common/Nav'
 import RecommendList from '../components/music/recommendList'
-import SwipeableViews from 'react-swipeable-views'
-import { Link } from 'react-router'
 import Beat from '../components/music/beat'
-import Paging from './paging'
+import Search from '../components/music/search'
 
 class App extends Component {
 
@@ -46,8 +49,10 @@ class App extends Component {
         <div className="header" style={{backgroundColor:'#ce3d3e',color:'#fff',display:'flex',justifyContent: 'space-between',padding:'0 1rem'}}>
           
           <div onClick={()=>this.back()} style={{display:'flex',flex:1}}></div>
-          <div style={{display:'flex',flex:2,justifyContent: 'center'}}>首页</div>
-          <Link style={{display:'flex',flex:1,justifyContent: 'flex-end'}}  to='/play'>
+          <div style={{display:'flex',flex:10,justifyContent: 'center'}} onClick={()=>browserHistory.push('/search')}>
+            <Search />
+          </div>
+          <Link style={{display:'flex',flex:1,justifyContent: 'flex-end'}}  to={`/play`}>
             <Beat  beat={controll === 'play'} />
           </Link>
         </div>
