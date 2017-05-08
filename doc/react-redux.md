@@ -1,4 +1,4 @@
-#redux 个人整理
+# redux 个人整理
 ## 序
 阅读了redux的文档后，并参与了一个练手项目[r-music](https://github.com/ScorpionJay/r-music)后，通过自己的理解，整理了这篇文档。初学，所以一定会有不详或者错误的地方。
 
@@ -12,7 +12,7 @@
 
 
 
-##以search为例，讲解redux，react-redux
+# 以search为例，讲解redux，react-redux
 ## Provider
 #### src/index.js
 	import configureStore from './stores'
