@@ -173,4 +173,5 @@ server {
 nginx -s reload
 ```
 
-
+## 个人整理文档链接
+> [初学者关于react + redux + react-redux的理解](doc/react-redux.md)
