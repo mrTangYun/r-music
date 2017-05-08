@@ -7,7 +7,7 @@ var path = require("path");
 
 module.exports = function (options){
     return {
-    	context: path.join(__dirname, "../src"),
+    	context: path.join(__dirname, "../src"),//__dirname指向当前执行脚本的目录
     	cache:true,
     	devtool: 'source-map',
         entry: {
