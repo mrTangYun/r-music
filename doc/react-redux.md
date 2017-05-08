@@ -7,6 +7,7 @@
 > 
 
 通过我自己的理解方式，简单得整理了react、redux、react-redux三者之间的关系图，如下：
+
 ![](relation.png)
 
 
