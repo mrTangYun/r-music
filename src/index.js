@@ -4,7 +4,7 @@
 
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import routers from './routers'
+//import routers from './routers'
 import configureStore from './stores'
 import './sass/main.scss'
 import {
@@ -21,7 +21,6 @@ import App from './app';
 import Home from './containers/home'
 import Album from './containers/album'
 import Recommend from './containers/recommend'
-import djradio from './containers/djradio'
 import playlist from './containers/playlist'
 import rank from './containers/rank'
 import NoMatch from './containers/pageNotFound'
@@ -32,6 +31,7 @@ import search from './containers/search'
 import album from './containers/album'
 import play from './containers/play'
 import rankinfo from './containers/rankinfo'
+import mvplay from './containers/mvPlay'
 
 // 渲染
 render(
@@ -48,6 +48,7 @@ render(
   	  <Route  path="/play/:id" component={play} />
   	  <Route  path="/play" component={play} />
       <Route  path="/rankinfo/:rankid" component={rankinfo} />
+      <Route  path="/mvplay/:mvid" component={mvplay} />
   	  <Route component={Home}/>
      </Switch> 
   </Router>

@@ -95,6 +95,11 @@ module.exports = function (options){
                     changeOrigin: true,
                     pathRewrite: {"^/mobilecdn" : ""}
                 },
+                "/NeteaseCloudMusicApi": {
+                    target: "http://localhost:3000",
+                    changeOrigin: true,
+                    pathRewrite: {"^/NeteaseCloudMusicApi" : ""}
+                },
             }
         }
     }

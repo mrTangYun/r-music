@@ -9,6 +9,7 @@ import  album from './album'
 import  music from './music'
 import  search from './search'
 import  rank from './rank'
+import  mv from './mv'
 
 const reducers = combineReducers({
   home,
@@ -20,7 +21,8 @@ const reducers = combineReducers({
   album,
   music,
   search,
-  rank
+  rank,
+  mv
 })
 
 export default reducers

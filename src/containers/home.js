@@ -10,11 +10,11 @@ import Beat from '../components/music/beat'
 import Search from '../components/music/search'
 
 import Recommend from './recommend'
-import djradio from './djradio'
+import mv from './mv'
 import playlist from './playlist'
 import rank from './rank'
 
-const navArray = ['个性推荐','歌单','排行榜','主播电台']
+const navArray = ['个性推荐','歌单','排行榜','MV']
 
 class App extends Component {
 
@@ -32,7 +32,7 @@ class App extends Component {
         case '/discover/rank':
           index = 2
           break;
-        case '/discover/djradio':
+        case '/discover/mv':
           index = 3
           break;
       }
@@ -67,7 +67,7 @@ class App extends Component {
         case 3:
          this.setState({flag3:true})
           setTimeout(()=> this.setState({flag3:false}),750) 
-          this.props.history.push('/discover/djradio')
+          this.props.history.push('/discover/mv')
           break;
       }
     };
@@ -137,7 +137,7 @@ class App extends Component {
 
         <Switch className='root'>
           <Route  path={`${this.props.match.url}/recommend`} component={Recommend} />
-          <Route  path={`${this.props.match.url}/djradio`} component={djradio} />
+          <Route  path={`${this.props.match.url}/mv`} component={mv} />
           <Route  path={`${this.props.match.url}/playlist`} component={playlist} />
           <Route  path={`${this.props.match.url}/rank`} component={rank} />
           <Route component={Recommend}/>

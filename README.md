@@ -1,6 +1,6 @@
 # music
 
-
+网易云接口： [https://binaryify.github.io/NeteaseCloudMusicApi/](https://binaryify.github.io/NeteaseCloudMusicApi/)
 
 ## 扫码体验
 
