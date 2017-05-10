@@ -1,30 +1,75 @@
 import React, { Component, PropTypes } from 'react'
-import { Link,browserHistory } from 'react-router'
 import { connect } from 'react-redux'
-
-import { homeAPI } from '../actions/home'
-
-import SwipeableViews from 'react-swipeable-views'
-
+import { homeAction,scrollTopAction } from '../actions/home'
 import Slider from '../components/common/slider'
 import Nav from '../components/common/Nav'
 import RecommendList from '../components/music/recommendList'
+import {  BrowserRouter as Router,
+  Route,Link,Redirect,Switch } from 'react-router-dom'
 import Beat from '../components/music/beat'
 import Search from '../components/music/search'
 
+import Recommend from './recommend'
+import djradio from './djradio'
+import playlist from './playlist'
+import rank from './rank'
+
+const navArray = ['个性推荐','歌单','排行榜','主播电台']
+
 class App extends Component {
+
 
   constructor(props) {
     super(props);
-  
+    let index
+    switch(this.props.history.location.pathname) {
+        case '/discover/recommend':
+          index = 0
+          break;
+        case '/discover/playlist':
+          index = 1
+          break;
+        case '/discover/rank':
+          index = 2
+          break;
+        case '/discover/djradio':
+          index = 3
+          break;
+      }
+
     this.state = {
-      index: 0,
+      index: index,
+      page:1
     };
 
     this.handleChangeTabs = (value) => () => {
+
+
       this.setState({
         index: value,
       });
+      switch(value) {
+        case 0:
+          this.setState({flag0:true})
+          setTimeout(()=> this.setState({flag0:false}),750) 
+          this.props.history.push('/discover/recommend')
+          break;
+        case 1:
+         this.setState({flag1:true})
+          setTimeout(()=> this.setState({flag1:false}),750) 
+          this.props.history.push('/discover/playlist')
+          break;
+        case 2:
+         this.setState({flag2:true})
+          setTimeout(()=> this.setState({flag2:false}),750) 
+          this.props.history.push('/discover/rank')
+          break;
+        case 3:
+         this.setState({flag3:true})
+          setTimeout(()=> this.setState({flag3:false}),750) 
+          this.props.history.push('/discover/djradio')
+          break;
+      }
     };
 
     this.handleChangeIndex = (index) => {
@@ -36,56 +81,67 @@ class App extends Component {
   }
 
   componentDidMount(){
-    const { dispatch } = this.props
-    dispatch(homeAPI(1))
+    const { dispatch,data,scrollTop } = this.props
+
+    // if( this.props.history.location.pathname.indexOf('/discover') > 0 ){
+    //   this.props.history.replace('/discover/recommend')
+    // }
+
+    if( data.recommendMusics.length > 1){
+      // 计算有问题
+      //this.refs.container.scrollTop = scrollTop>0 ? scrollTop + this.refs.container.clientHeight / 2 - 50 : 0
+    }else{
+      dispatch(homeAction(data,this.state.page))
+    }
   }
 
   render() {
     const { dispatch,data,login,controll} = this.props
-    const { index } = this.state;
+    const {
+      index,
+    } = this.state;
     return (
       <div className='root'>
 
         <div className="header" style={{backgroundColor:'#ce3d3e',color:'#fff',display:'flex',justifyContent: 'space-between',padding:'0 1rem'}}>
-          
           <div onClick={()=>this.back()} style={{display:'flex',flex:1}}></div>
-          <div style={{display:'flex',flex:10,justifyContent: 'center'}} onClick={()=>browserHistory.push('/search')}>
+          <Link style={{display:'flex',flex:10,justifyContent: 'center'}} to={'/search'} >
             <Search />
-          </div>
-          <Link style={{display:'flex',flex:1,justifyContent: 'flex-end'}}  to={`/play`}>
+          </Link>
+          <Link style={{display:'flex',flex:1,justifyContent: 'flex-end'}}  to='/play'>
             <Beat  beat={controll === 'play'} />
           </Link>
         </div>
+          
 
         <div className='homeTab'>
             <div className='homeTab1'>
-              <div style={index === 0 ? { color: '#ce3d3e' } :{}} onClick={this.handleChangeTabs(0)}>个性推荐</div>
-              <div style={index === 1 ? { color: '#ce3d3e' } :{}} onClick={this.handleChangeTabs(1)}>歌单</div>
-              <div style={index === 2 ? { color: '#ce3d3e' } :{}} onClick={this.handleChangeTabs(2)}>主播电台</div>
-              <div style={index === 3 ? { color: '#ce3d3e' } :{}} onClick={this.handleChangeTabs(3)}>排行榜</div>
+              {
+                navArray.map( (item,i) => 
+                  <div style={{position:'relative',width: '100%',height:'100%'}}>
+                    <div style={ Object.assign({ display:'flex',flex:1,justifyContent: 'center',alignItems:'center'},  index === i ? { color: '#ce3d3e' } :{} )} onClick={this.handleChangeTabs(i)}>{item}</div>
+                    {
+                      this.state[`flag${i}`] ? <div className={this.state[`flag${i}`] ? 'ripple' : ''} style={{position: 'absolute',backgroundColor:'#999',left:0,width:'100%',height:'100%'}}></div> :''
+                    }
+                  </div>  
+  
+                )
+              }
+              
             </div>
             <div className="highlight" style={{transform:`translateX(${index}00%)`}}></div>
         </div>
         
+       
+        
 
-        <div className="container">
-          
-          <SwipeableViews index={index} onChangeIndex={this.handleChangeIndex}>
-            <div>
-              <Slider data={data.slider} />
-              <RecommendList data={data.recommendMusics}/>
-            </div>
-            <div>
-            </div>
-            <div>
-              TODO
-            </div>
-            <div>
-              TODO
-            </div>
-          </SwipeableViews>
-
-        </div>
+        <Switch className='root'>
+          <Route  path={`${this.props.match.url}/recommend`} component={Recommend} />
+          <Route  path={`${this.props.match.url}/djradio`} component={djradio} />
+          <Route  path={`${this.props.match.url}/playlist`} component={playlist} />
+          <Route  path={`${this.props.match.url}/rank`} component={rank} />
+          <Route component={Recommend}/>
+         </Switch>
 
         <Nav/>
 
@@ -97,6 +153,7 @@ class App extends Component {
 function map(state) {
   return {
     data: state.home.home,
+    scrollTop: state.home.scrollTop,
     login: state.login.login,
     controll:state.music.controll
   }

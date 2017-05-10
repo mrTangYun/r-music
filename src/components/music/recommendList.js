@@ -2,27 +2,31 @@
 * 推荐歌单组件
 */
 import React, { Component, PropTypes } from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import { browserHistory } from 'react-router'
 
 /**
 * 推荐歌单列表
 */
 export default class MusicList extends Component { 
+
+
   render() {
       return (
-        <div >
-          <Link to='/paging'>
-            <div className='recommod'>
-              <span style={{lineHeight: '1.6rem',color:'rgb(206, 61, 62)',}}>推荐歌单</span>
-              <span className='arrow-right'></span>
-            </div>
-          </Link>
-          <div style={Styles.container}>
-            {
-              this.props.data.map((obj)=> <MusicItem data={obj}/> )
-            }
-          </div>
+        <div>
+          {
+            this.props.data.length === 0 ? '': 
+              <div>
+                <div className='recommod'>
+                 
+                </div>
+                <div style={Styles.container}>
+                  {
+                    this.props.data.map((obj)=> <MusicItem data={obj} scrollTop={this.props.scrollTop}  history={this.props.history} /> )
+                  }
+                </div>
+              </div>
+          }
         </div>
       )
   }
@@ -31,18 +35,25 @@ export default class MusicList extends Component {
 /**
 * 推荐歌单详情
 */
-class MusicItem extends Component {
+class MusicItem extends Component { 
+
+  goAlbum(){
+    this.props.scrollTop()
+    this.props.history.push(`/album/${this.props.data.specialid}`)
+  }
+
   render() {
       const {specialname,imgurl,intro,playcount,specialid} = this.props.data;
       const imgurl2 = imgurl.replace('{size}',400);
       return (
-        <Link style={Styles.containerItem} to={`/album/${specialid}`}>
-          <div style={Styles.img}>
+        <div style={Styles.containerItem} onClick={()=>this.goAlbum()}>
+          <div style={Styles.item}>
             <div style={Styles.count}>{ parseInt(playcount/10000) + '万'}</div>
             <img src={imgurl2} style={Styles.img} />
+            <div style={Styles.name}>{specialname}</div>
           </div>
-          <div style={Styles.name}>{specialname}</div>
-        </Link>
+          
+        </div>
       )
   }
 }
@@ -61,7 +72,7 @@ const Styles = {
     alignItems:'center',
     color:'#333',
     backgroungColor: '#f0f0f0',
-    marginBottom:'1rem',
+    marginBottom:'1rem'
   },
   name:{
     display: 'flex',
@@ -69,15 +80,20 @@ const Styles = {
     fontSize:'1rem',
     width:'9rem'
   },
+  item:{
+    position: 'relative'
+  },
   img:{
-    width:'9rem'
+    width:'9rem',
   },
   count:{
     position:'absolute',
-    width:'8.5rem',
-    marginTop:'.5rem',
+    width:'100%',
     textAlign: 'right',
     color:'#fff',
-    fontSize:'.8rem'
+    top:0,
+    left:0,
+    fontSize:'.8rem',
+    backgroundColor:'rgba(153, 153, 153, 0.4)'
   }
 }

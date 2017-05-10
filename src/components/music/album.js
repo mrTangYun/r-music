@@ -3,7 +3,7 @@
 */
 
 import React, { Component, PropTypes } from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
 /**
 * 专辑列表
@@ -23,6 +23,7 @@ export default class Album extends Component {
                 <div style={Styles.introName}>{specialname}</div>
             </div>
             {
+              this.props.data.list.length === 0 ? '' :
               this.props.data.list.map((obj,index)=>
                   <Item index={index+1}  {...obj}  addMusic={(music) => this.props.addMusic(music) }  currentHash={this.props.currentHash}/>
               )
@@ -42,15 +43,17 @@ class Item extends Component {
     this.props.addMusic({
       hash,name:filename
     })
+    // 
   }
 
   render() {
       const {filename,imgurl,intro,playcount,hash,index,currentHash} = this.props;
       return (
-        <div style={Object.assign( {},Styles.ItemContainer,  currentHash === hash ? {color:'rgb(206, 61, 62)'} : {} )}  onClick={()=> this.addMusic() } >
+        <Link style={Object.assign( {},Styles.ItemContainer,  currentHash === hash ? {color:'rgb(206, 61, 62)'} : {} )} 
+          to={`/play/${hash}`}>
           <div style={Styles.index}>{index}</div>
           <div style={Styles.name}>{filename}</div>
-        </div>
+        </Link>
       )
   }
 }
@@ -85,7 +88,6 @@ const Styles = {
     height:'13.5rem',
     width:'100%',
     filter: 'blur(60px)',
-    '-webkit-filter': 'blur(60px)',
   },
   ItemContainer:{
     display: 'flex',

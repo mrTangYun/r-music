@@ -7,7 +7,7 @@ var path = require("path");
 
 module.exports = function (options){
     return {
-    	context: path.join(__dirname, "../src"),//__dirname指向当前执行脚本的目录
+    	context: path.join(__dirname, "../src"),
     	cache:true,
     	devtool: 'source-map',
         entry: {
@@ -70,35 +70,25 @@ module.exports = function (options){
             }),
             // 打开浏览器
       		new OpenBrowserPlugin({ url: 'http://localhost:9999' }),
-            /*
-            * Plugin: CopyWebpackPlugin 拷贝文件
-            * Description: Copy files and directories in webpack.
-            *
-            * Copies project static assets.
-            *
-            * See: https://www.npmjs.com/package/copy-webpack-plugin
-            */
-            new CopyWebpackPlugin([
-                { from: 'json', to: 'json' },
-                { from: 'images/favicon.ico', to: 'image/favicon.ico' }
-            ])
         ],
         devServer: {
             contentBase: "./src",//本地服务器所加载的页面所在的目录
             historyApiFallback: true,//不跳转
             inline: true,//实时刷新
             host: '0.0.0.0',
+            disableHostCheck: true, // 解决Invalid Host Header
             port:9999,
             // 设置代理
             proxy:{
-                "/api": {
-                    target: "http://localhost:8001",
-                    pathRewrite: {"^/api" : ""}
-                },
                 "/kugou": {
                     target: "http://m.kugou.com",
                     changeOrigin: true,
                     pathRewrite: {"^/kugou" : ""}
+                },
+                "/ad": {
+                    target: "http://ads.service.kugou.com",
+                    changeOrigin: true,
+                    pathRewrite: {"^/ad" : ""}
                 },
                 "/mobilecdn": {
                     target: "http://mobilecdn.kugou.com",

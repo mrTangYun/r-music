@@ -7,7 +7,8 @@ import  dialog from './dialog'
 import  user from './user'
 import  album from './album'
 import  music from './music'
-import search from './search'
+import  search from './search'
+import  rank from './rank'
 
 const reducers = combineReducers({
   home,
@@ -19,6 +20,7 @@ const reducers = combineReducers({
   album,
   music,
   search,
+  rank
 })
 
 export default reducers

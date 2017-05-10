@@ -3,15 +3,10 @@ import { connect } from 'react-redux'
 
 class App extends Component {
 
-  componentDidMount(){
-    const { dispatch } = this.props
-  }
-
   render() {
-    const { dispatch,data } = this.props
     return (
-      <div>
-          注册TODO
+      <div className='container'>
+        TODO
       </div>
     )
   }
@@ -19,7 +14,7 @@ class App extends Component {
 
 function map(state) {
   return {
-    data: state.home.home
+
   }
 }
 

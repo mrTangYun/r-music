@@ -1,13 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { homeAPI } from '../actions/home'
 
 import Nav from '../components/common/Nav';
 class App extends Component {
 
   componentDidMount(){
     const { dispatch } = this.props
-    dispatch(homeAPI())
   }
   render() {
     const { dispatch,data,login } = this.props

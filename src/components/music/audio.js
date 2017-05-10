@@ -1,4 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+/** 
+* 播放器组件
+*/
+
+import React, { Component, PropTypes } from 'react'
 
 export default class Audio extends Component { 
   
@@ -8,10 +12,10 @@ export default class Audio extends Component {
     if( this.props.time.changeTimeFlag ){
       this.refs.music.currentTime = this.props.time.currentTime
     }
+
     switch(this.props.controll) {
       case 'play':
-            if(this.props.data.currentMusic.url === '')return
-              // alert(this.props.controll)
+            if(this.props.data.url === '')return
             this.refs.music.play()
         break;
       case 'pause':
@@ -28,7 +32,7 @@ export default class Audio extends Component {
       return (
         <div>
           <audio 
-            src={this.props.data.currentMusic.url}
+            src={this.props.data.url}
             ref='music'
             onEnded={()=>this.props.changeMusic()} 
             onTimeUpdate={()=>this.update()}  />

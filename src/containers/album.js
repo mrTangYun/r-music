@@ -1,30 +1,33 @@
 import React, { Component, PropTypes } from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { browserHistory } from 'react-router'
 import Nav from '../components/common/Nav'
 import Album from '../components/music/album'
-import { albumListAPI,albumToMusicboxAPI } from '../actions/album'
+import { albumListAction } from '../actions/album'
 import Beat from '../components/music/beat'
 import { musicBoxAddAPI,currentMusicAPI,changetimeAPI,controllAPI } from '../actions/music'
 
 class App extends Component {
 
   back(){
-      browserHistory.goBack()
+      this.props.history.goBack()
   }
 
   componentDidMount(){
-    const { dispatch } = this.props
-    dispatch(albumListAPI(this.props.params.id))
+    const { dispatch,albumList } = this.props
+
+
+    if( albumList.info.specialid != this.props.match.params.id){
+      dispatch(albumListAction(this.props.match.params.id))
+    }
   }
 
   musicBoxAdd(m){
-    browserHistory.push(`play/${m.hash}`)
+    // browserHistory.push(`play/${m.hash}`)
   }
 
   render() {
-    const { dispatch,data,login,controll,music } = this.props
+    const { dispatch,albumList,login,controll,currentMusic } = this.props
     return (
       <div className='root'>
 
@@ -37,7 +40,7 @@ class App extends Component {
         </div>
         
         <div className="container">
-          <Album data={data} addMusic={(m) => this.musicBoxAdd(m)} currentHash={music.currentMusic.hash}/>
+          <Album data={albumList} addMusic={(m) => this.musicBoxAdd(m)} currentHash={currentMusic.hash} history={this.props.history}/>
         </div>
 
         <Nav/>
@@ -49,10 +52,11 @@ class App extends Component {
 
 function map(state) {
   return {
-    data: state.album.albumList,
-    music: state.music.musicBox,
-    controll:state.music.controll,
-    login: state.login.login
+    albumList: state.album.albumList,
+    message: state.message.message,
+    musicPlayList: state.music.musicPlayList,
+    currentMusic: state.music.currentMusic,
+    controll:state.music.controll
   }
 }
 

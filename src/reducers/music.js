@@ -1,49 +1,48 @@
 import { combineReducers } from 'redux'
-import { MUSICBOX,MUSICBOXADD,CURRENTMUSIC,KRC,PLAY,PAUSE,CHANGETIME,PRE,NEXT} from '../actions/music'
-import { ALBUMTOMUSICBOX } from '../actions/album'
+import { MUSICBOX,MUSICBOXADD,CURRENTMUSIC,KRC,PLAY,PAUSE,CHANGETIME,PRE,NEXT,FIRSTTIME } from '../actions/music'
 
-let vo = {
-  musicBox:[
+let musicPlayListVo = [
     {
       hash:'',
       name:''
     }
-  ],
-  currentMusic:{
-    hash:'',
-    name:'',
-    krc:[{time:0,str:''}],
-    singerName:'',
-    songName:'',
-    url:'',
-    imgUrl:''
-  }
-}
+]
 
-
-function musicBox(state = vo, action) {
+function musicPlayList(state = musicPlayListVo, action) {
   switch (action.type) {
     case MUSICBOX:// 初始化音乐盒
-      state.musicBox = action.obj
       return state 
     case MUSICBOXADD:// 音乐盒添加音乐
       let flag = true
-      for(let i=0; i<state.musicBox.length; i++){
-          if(state.musicBox[i].hash === action.obj.hash){
+      for(let i=0; i<state.length; i++){
+          if(state[i].hash === action.obj.hash){
             flag = false
             break
           }
         }
       if( flag ){
-        state.musicBox = state.musicBox[0].hash === '' ? [].concat(action.obj) : state.musicBox.concat( action.obj )
+        state = state[0].hash === '' ? [].concat(action.obj) : state.concat( action.obj )
       }  
       return state 
-    case CURRENTMUSIC:// 音乐盒当前音乐
-      state.currentMusic = action.obj
+    default:
       return state
-    case ALBUMTOMUSICBOX://歌单=>播放列表
-      state.musicBox = action.obj;
-      return state
+  }
+}
+
+let currentMusicVo = {
+  hash:'',
+  name:'',
+  krc:[{time:0,str:''}],
+  singerName:'',
+  songName:'',
+  url:'',
+  imgUrl:'',
+  duration:0
+}
+function currentMusic(state = currentMusicVo, action){
+  switch (action.type) {
+    case CURRENTMUSIC:
+      return action.obj
     default:
       return state
   }
@@ -69,8 +68,18 @@ function controll(state = 'pause', action){
   }
 }
 
+
+function firstTime(state = true, action){
+  switch (action.type) {
+    case FIRSTTIME:
+      return action.obj
+    default:
+      return state
+  }
+}
+
 const Reducers = combineReducers({
-  musicBox,time,controll
+  musicPlayList,currentMusic,time,controll,firstTime
 })
 
 export default Reducers
