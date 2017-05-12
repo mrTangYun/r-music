@@ -157,3 +157,45 @@ html,body {
 .top3{
     background: rgb(243,177,62);
 }
+
+
+.heart {
+    position: relative;
+    width: .9rem;
+    height: .8rem;
+}
+.heart:before,
+.heart:after {
+    position: absolute;
+    content: "";
+    left: .5rem;
+    top: 0;
+    width: .5rem;
+    height: .8rem;
+    background: #aaa;
+    -moz-border-radius: .5rem .5rem 0 0;
+    border-radius: .5rem .5rem 0 0;
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+       -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+         -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+}
+.heart:after {
+    left: 0;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transform-origin: 100% 100%;
+       -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+         -o-transform-origin: 100% 100%;
+            transform-origin :100% 100%;
+}

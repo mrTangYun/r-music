@@ -17,14 +17,14 @@ export default class SimpleSlider extends Component {
       lazyLoad:true
     }
       
-    const { data } = this.props
+    const { data,playMV } = this.props
     return (
       <div className='fullSlide'>
         {
           data.length === 0 ? '' :
             <Slider {...settings}  >
               {
-                data.map((item) => <div><SliderItem {...item}/></div> )
+                data.map((item) => <div><SliderItem playMV={playMV} {...item}/></div> )
               }
             </Slider>
         }
@@ -36,10 +36,10 @@ export default class SimpleSlider extends Component {
 /**
 * 轮播子组件
 */
-class SliderItem extends Component { 
+class SliderItem extends Component {
   render() {
     return (
-      <a href={this.props.picUrl} target='_blank' rel="noopener">
+      <a onClick={()=>this.props.playMV(this.props.id)} rel="noopener">
         <img src={this.props.picUrl} />
       </a>
     )

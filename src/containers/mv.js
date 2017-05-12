@@ -9,12 +9,15 @@ class App extends Component {
 
   componentDidMount(){
     const { dispatch,mv } = this.props
+    console.log(1)
     if( mv.recommend.length === 0 ){
       dispatch(mvRecommendAction())
     }
     if( mv.newest.length === 0){
     	dispatch(mvNewestAction())
     }
+
+    console.log(2)
   }
 
   playMV(mvid){

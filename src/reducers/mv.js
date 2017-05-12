@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { MV_RECOMMEND,MV_NEWEST,MV_INFO } from '../actions/mv'
+import { MV_RECOMMEND,MV_NEWEST,MV_INFO,MV_COMMENT } from '../actions/mv'
 
 function recommend(state = [], action){
   switch(action.type) {
@@ -19,7 +19,16 @@ function newest(state = [], action){
   }
 }
 
-function mvInfo(state = "http://v4.music.126.net/20170511055844/a9faa333e80afc62866cc8ca70a91685/web…c/ICUwMCRgYmRiIjAwMSQgYA==/mv/5516708/3e0541be684a1a56e48bcb9cbf84f3c1.mp4", action){
+let mvInfoVo = {
+  name: '',
+  brs: {
+    240: null,
+    480: null,
+    720: null,
+    1080: null,
+  }
+}
+function mvInfo(state = mvInfoVo, action){
   switch(action.type) {
     case MV_INFO:
       return action.obj;
@@ -28,8 +37,26 @@ function mvInfo(state = "http://v4.music.126.net/20170511055844/a9faa333e80afc62
   }
 }
 
+
+let commentVo = [{
+  user: {},
+  time: 1494424829003,
+  likedCount: 34,
+  commentId: 379105019,
+  liked: false,
+  content: ""
+  }]
+function comment(state = commentVo, action){
+  switch(action.type) {
+    case MV_COMMENT:
+      return action.obj;
+    default:
+      return state;
+  }
+}
+
 const Reducers = combineReducers({
-  recommend,newest,mvInfo
+  recommend,newest,mvInfo,comment
 })
 
 export default Reducers
