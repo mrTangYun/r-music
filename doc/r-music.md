@@ -17,12 +17,9 @@
 
 <span id="prtscn"></span>
 ## 效果展示
-
-![个性推荐](prtscn-recommend.png) ![歌单列表](prtscn-album.png)
-![排行榜列表](prtscn-rank.png) ![MV列表](prtscn-mv.png)
-![歌单详情](prtscn-albuminfo.png) ![排行榜详情](prtscn-rankinfo.png)
+![个性推荐](prtscn-recommend.png) ![排行榜列表](prtscn-rank.png) 
+![歌单详情](prtscn-albuminfo.png) ![搜索](prtscn-search1.png)
 ![播放音乐](prtscn-playmusic.png) ![播放MV](prtscn-playmv.png)
-![搜索](prtscn-search1.png) ![搜索结果](prtscn-search2.png)
 
 <span id="howtorun"></span>
 ## 项目说明
