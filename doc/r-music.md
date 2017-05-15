@@ -1,9 +1,9 @@
 # r-music
 
 ## 目录
-- [在线体验](#online)
+- [在线体验](#在线体验)
 - [效果展示](#prtscn)
-- [项目说明](#howtorun)
+- [项目说明](#about)
 - [react、redux、react-redux 知识梳理](#note-redux)
 
 
@@ -24,7 +24,7 @@
 ![播放音乐](prtscn-playmusic.png) ![播放MV](prtscn-playmv.png)
 
 <span id="howtorun"></span>
-## 项目说明
+## about
 
 ### 技术栈
 react + react-router + redux + webpack + ES6 + fetch + sass + flex
