@@ -8,8 +8,8 @@
 
 感谢[ScorpionJay](https://github.com/ScorpionJay)同学，该项目前期的工作，大量都由他完成。
 
-源码地址：[https://github.com/ScorpionJay/r-music](https://github.com/ScorpionJay/r-music)
-MV数据暂未合到主干：[https://github.com/li772091958/r-music](https://github.com/li772091958/r-music)
+- 源码地址：[https://github.com/ScorpionJay/r-music](https://github.com/ScorpionJay/r-music)
+- MV数据暂未合到主干：[https://github.com/li772091958/r-music](https://github.com/li772091958/r-music)
 
 ## 目录
 - [参考文档](#参考文档)
