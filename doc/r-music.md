@@ -4,12 +4,12 @@
 
 其中酷狗的数据拉取，相对容易；网易云数据的拉取，参照： [https://binaryify.github.io/NeteaseCloudMusicApi/](https://binaryify.github.io/NeteaseCloudMusicApi/)
 
-前端坑多，该项目还有很多bug，欢迎一起学习交流，共同爬坑。
-
 感谢[ScorpionJay](https://github.com/ScorpionJay)同学，该项目前期的工作，大量都由他完成。
 
 - 源码地址：[https://github.com/ScorpionJay/r-music](https://github.com/ScorpionJay/r-music)
 - MV数据暂未合到主干：[https://github.com/li772091958/r-music](https://github.com/li772091958/r-music)
+
+前端坑多，该项目还有很多bug，欢迎一起学习交流，共同爬坑。
 
 ## 目录
 - [参考文档](#参考文档)
