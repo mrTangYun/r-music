@@ -36,14 +36,14 @@
 
 [http://cenuon.com:8666](http://cenuon.com:8666)
 
-![-](qcode.png)
+![-](doc/qcode.png)
 
 ## 效果展示
-![个性推荐](prtscn-recommend.png) ![排行榜列表](prtscn-rank.png) 
+![个性推荐](doc/prtscn-recommend.png) ![排行榜列表](doc/prtscn-rank.png) 
 
-![歌单详情](prtscn-albuminfo.png) ![搜索](prtscn-search1.png)
+![歌单详情](doc/prtscn-albuminfo.png) ![搜索](doc/prtscn-search1.png)
 
-![播放音乐](prtscn-playmusic.png) ![播放MV](prtscn-playmv.png)
+![播放音乐](doc/prtscn-playmusic.png) ![播放MV](doc/prtscn-playmv.png)
 
 ## 项目说明
 
@@ -218,7 +218,7 @@ proxy，设置代理，是为了解决跨域的问题。
 
 通过我自己的理解方式，简单地整理了react、redux、react-redux三者之间的关系图，如下：
 
-![](relation.png)
+![](doc/relation.png)
 
 
 ### 通过代码，梳理redux、react-redux
