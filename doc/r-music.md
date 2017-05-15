@@ -7,7 +7,7 @@
 	- [技术栈](#技术栈)
 	- [技术栈](#项目结构)
 	- [技术栈](#项目运行)
-- [react、redux、react-redux 知识梳理](#note-redux)
+- [react、redux、react-redux 知识梳理](#react、redux、react-redux 知识梳理)
 
 
 
