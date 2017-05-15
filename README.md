@@ -401,7 +401,7 @@ action是一个带有type关键字的对象，如`{type:SEARCH_HOT, obj}`和`{ty
 
 在`src/store/index.js`中，开发环境下，引入了中间件`redux-logger`的`createLogger`，在浏览器console可以观察到每次reducer的结果，如下：
 
-![](logger-searchhot.png)
+![](doc/logger-searchhot.png)
 
 ##### src/reducer/index.js
 	import { combineReducers } from 'redux'
