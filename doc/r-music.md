@@ -1,6 +1,13 @@
 # r-music
+## 序
+该项目作为react技术栈的练手项目，使用了酷狗和网易云的数据。
+
+其中酷狗的数据拉取，相对容易；网易云数据的拉取，参照： [https://binaryify.github.io/NeteaseCloudMusicApi/](https://binaryify.github.io/NeteaseCloudMusicApi/)
+
+前端坑多，该项目还有很多bug，欢迎一起学习交流，共同爬坑。
 
 ## 目录
+- [参考文档](#参考文档)
 - [在线体验](#在线体验)
 - [效果展示](#效果展示)
 - [项目说明](#项目说明)
@@ -9,16 +16,23 @@
 	- [技术栈](#项目运行)
 - [知识梳理](#知识梳理)
 
+## 参考文档
 
+开发这个项目，我参阅的学习文档如下：
+ 
+-  React 入门实例教程：[http://www.ruanyifeng.com/blog/2015/03/react](http://www.ruanyifeng.com/blog/2015/03/react)
+-  React Router 使用教程：[http://www.ruanyifeng.com/blog/2016/05/react_router.html](http://www.ruanyifeng.com/blog/2016/05/react_router.html)
+-  ECMAScript 6 入门：[http://es6.ruanyifeng.com/](http://es6.ruanyifeng.com/)
+-  redux中文文档：[http://www.redux.org.cn/](http://www.redux.org.cn/)
+-  Redux 入门教程（三）——React-Redux 的用法：[http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html)
+-  Flex 布局教程——语法篇：[http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
 
-<span id="online"></span>
 ## 在线体验
 
 [http://cenuon.com:8666](http://cenuon.com:8666)
 
 ![-](qcode.png)
 
-<span id="prtscn"></span>
 ## 效果展示
 ![个性推荐](prtscn-recommend.png) ![排行榜列表](prtscn-rank.png) 
 
@@ -26,7 +40,6 @@
 
 ![播放音乐](prtscn-playmusic.png) ![播放MV](prtscn-playmv.png)
 
-<span id="howtorun"></span>
 ## 项目说明
 
 ### 技术栈
@@ -194,29 +207,16 @@ proxy，设置代理，是为了解决跨域的问题。
 	nginx -s reload
 
 
-<span id="note-redux"></span>
-## react、redux、react-redux 知识梳理
-
-### 参考文档
-
-开发这个项目，我参阅的学习文档如下：
- 
--  React 入门实例教程：[http://www.ruanyifeng.com/blog/2015/03/react](http://www.ruanyifeng.com/blog/2015/03/react)
--  React Router 使用教程：[http://www.ruanyifeng.com/blog/2016/05/react_router.html](http://www.ruanyifeng.com/blog/2016/05/react_router.html)
--  ECMAScript 6 入门：[http://es6.ruanyifeng.com/](http://es6.ruanyifeng.com/)
--  redux中文文档：[http://www.redux.org.cn/](http://www.redux.org.cn/)
--  Redux 入门教程（三）——React-Redux 的用法：[http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html)
--  Flex 布局教程——语法篇：[http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
+## 知识梳理
 
 ### 流程图解
-
 
 通过我自己的理解方式，简单地整理了react、redux、react-redux三者之间的关系图，如下：
 
 ![](relation.png)
 
 
-### 知识梳理
+### 通过代码，梳理redux、react-redux
 
 注：下面代码只列出搜索功能的关键部分，源码地址：[https://github.com/ScorpionJay/r-music](https://github.com/ScorpionJay/r-music)
 
