@@ -18,7 +18,9 @@
 <span id="prtscn"></span>
 ## 效果展示
 ![个性推荐](prtscn-recommend.png) ![排行榜列表](prtscn-rank.png) 
+
 ![歌单详情](prtscn-albuminfo.png) ![搜索](prtscn-search1.png)
+
 ![播放音乐](prtscn-playmusic.png) ![播放MV](prtscn-playmv.png)
 
 <span id="howtorun"></span>
