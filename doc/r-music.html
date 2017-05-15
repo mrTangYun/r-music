@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>r-music</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>r-music</h1>
+<h2>序</h2>
+<p>该项目作为react技术栈的练手项目，使用了酷狗和网易云的数据。</p>
+<p>其中酷狗的数据拉取，相对容易；网易云数据的拉取，参照： <a href="https://binaryify.github.io/NeteaseCloudMusicApi/">https://binaryify.github.io/NeteaseCloudMusicApi/</a></p>
+<p>感谢<a href="https://github.com/ScorpionJay">ScorpionJay</a>同学，该项目前期的工作，大量都由他完成。</p>
+<ul>
+<li>源码地址：<a href="https://github.com/ScorpionJay/r-music">https://github.com/ScorpionJay/r-music</a></li>
+<li>MV数据暂未合到主干：<a href="https://github.com/li772091958/r-music">https://github.com/li772091958/r-music</a></li>
+</ul>
+<p>前端坑多，该项目还有很多bug，欢迎一起学习交流，共同爬坑。</p>
+<h2>目录</h2>
+<ul>
+<li><a href="#参考文档">参考文档</a></li>
+<li><a href="#在线体验">在线体验</a></li>
+<li><a href="#效果展示">效果展示</a></li>
+<li>
+<a href="#项目说明">项目说明</a>
+<ul>
+<li><a href="#技术栈">技术栈</a></li>
+<li><a href="#项目结构">项目结构</a></li>
+<li><a href="#项目运行">项目运行</a></li>
+</ul>
+</li>
+<li><a href="#知识梳理">知识梳理</a></li>
+</ul>
+<h2>参考文档</h2>
+<p>开发这个项目，我参阅的学习文档如下：</p>
+<ul>
+<li>React 入门实例教程：<a href="http://www.ruanyifeng.com/blog/2015/03/react">http://www.ruanyifeng.com/blog/2015/03/react</a></li>
+<li>React Router 使用教程：<a href="http://www.ruanyifeng.com/blog/2016/05/react_router.html">http://www.ruanyifeng.com/blog/2016/05/react_router.html</a></li>
+<li>ECMAScript 6 入门：<a href="http://es6.ruanyifeng.com/">http://es6.ruanyifeng.com/</a></li>
+<li>redux中文文档：<a href="http://www.redux.org.cn/">http://www.redux.org.cn/</a></li>
+<li>Redux 入门教程（三）——React-Redux 的用法：<a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html">http://www.ruanyifeng.com/blog/2016/09/redux<em>tutorial</em>part<em>three</em>react-redux.html</a></li>
+<li>Flex 布局教程——语法篇：<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html</a></li>
+</ul>
+<h2>在线体验</h2>
+<p><a href="http://cenuon.com:8666">http://cenuon.com:8666</a></p>
+<p><img src="qcode.png" alt="-" /></p>
+<h2>效果展示</h2>
+<p><img src="prtscn-recommend.png" alt="个性推荐" /> <img src="prtscn-rank.png" alt="排行榜列表" /> </p>
+<p><img src="prtscn-albuminfo.png" alt="歌单详情" /> <img src="prtscn-search1.png" alt="搜索" /></p>
+<p><img src="prtscn-playmusic.png" alt="播放音乐" /> <img src="prtscn-playmv.png" alt="播放MV" /></p>
+<h2>项目说明</h2>
+<h3>技术栈</h3>
+<p>react + react-router + redux + webpack + ES6 + fetch + sass + flex</p>
+<h3>项目结构</h3>
+<pre><code>r-music
+│  .babelrc
+│  .eslintrc.js
+│  .gitignore
+│  package.json
+│  README.md
+│  server.js                    //node启动脚本
+│  webpack.config.js            
+│  
+├─config
+│      webpack.dev.js           //开发环境的webpack配置文件
+│      webpack.hash.js          //开发环境的webpack配置文件
+│      webpack.prod.js          //生产环境的webpack配置文件
+│           
+└─src
+    │  api.js                   //封装的fetch
+    │  app.js                   
+    │  config.js                //api接口配置文件
+    │  index.hash.js
+    │  index.js
+    │  index.temp.hash.html
+    │  index.temp.html
+    │  routers.js               //路由
+    │  storage.js               //window.localStorage的各种方法
+    │      
+    ├─components               //组件
+    │          
+    ├─containers               //页面
+    │      account.js
+    │      album.js
+    │      friend.js
+    │      home.js
+    │      music.js
+    │      play.js
+    │      
+    ├─images
+    │      favicon.ico
+    │      
+    ├─json
+    │      home.json
+    │       
+    ├─actions                 //redux -- action
+    │      album.js
+    │      dialog.js
+    │      home.js
+    │      .
+    │      .     
+    ├─reducers                //redux -- reducer
+    │      album.js
+    │      dialog.js
+    │      home.js
+    │      index.js
+    │      login.js
+    │      message.js
+    │      music.js
+    │      spin.js
+    │      user.js
+    │      
+    stores                     //redux  -- store
+    │      index.js
+    │      
+    └─sass                    //样式文件
+            common.scss
+            home.scss
+            login.scss
+            main.scss
+            pagination.scss
+            slider.scss
+</code></pre>
+
+<h2>项目运行</h2>
+<pre><code>git clone https://github.com/ScorpionJay/r-music.git
+cd r-music
+npm install
+</code></pre>
+
+<h3>本地开发环境</h3>
+<pre><code>npm run dev
+</code></pre>
+
+<p>该命令在package.json的scripts中，即<code>&quot;dev&quot;: &quot;webpack-dev-server --config webpack.config.js --hot&quot;</code>，启动一个服务。
+如果一切正常，会自动打开浏览器并访问<code>http://localhost:9999</code>。</p>
+<pre><code>// config/webpack.dev.js部分代码
+devServer: {
+    contentBase: &quot;./src&quot;,//本地服务器所加载的页面所在的目录
+    historyApiFallback: true,//不跳转
+    inline: true,//实时刷新
+    host: '0.0.0.0',
+    port:9999,
+    // 设置代理
+    proxy:{
+        &quot;/kugou&quot;: {
+            target: &quot;http://m.kugou.com&quot;,
+            changeOrigin: true,
+            pathRewrite: {&quot;^/kugou&quot; : &quot;&quot;}
+        }
+    }
+}
+</code></pre>
+
+<p>因为在 <code>config/webpack.dev.js</code>设置了host:'0.0.0.0'，所以同局域网的其他手机或PC也可以通过ip+端口号访问。</p>
+<p>proxy，设置代理，是为了解决跨域的问题。</p>
+<h3>生产环境</h3>
+<pre><code>npm run build
+</code></pre>
+
+<p>该命令会将所有文件打包，并放在dist目录下。</p>
+<h4>配置nginx，设置反向代理，解决跨域问题</h4>
+<p>安装好nginx，找到nginx.conf，并添加如下代码（与默认80端口的server同级，这里只列出了主要的配置项）</p>
+<pre><code>server {
+    #端口号
+    listen 8666;
+    #项目根目录位置
+    root E:/r-music/dist
+    #访问首页文件
+    location / {
+        index index.html
+          try_files $uri  /index.html    // 解决刷新页面404问题
+   }
+    #缓存静态文件，30d表示30天，可按需调整大小
+    location ~ ^/(images|javascript|js|css|flash|media|static)/ {
+        expires 30d; 
+    }
+    #设置代理，解决跨域
+    location ^~/kugou/{
+      rewrite ^/kugou/(.*)$ /$1 break;
+      proxy_pass http://m.kugou.com;
+    }
+
+    location ^~/ad/{
+      rewrite ^/ad/(.*)$ /$1 break;
+      proxy_pass http://ads.service.kugou.com;
+    }
+
+    location ^~/musicSearch/{
+      rewrite ^/musicSearch/(.*)$ /$1 break;
+      proxy_pass http://mobilecdn.kugou.com;
+    }
+    location ^~/mobilecdn/{
+        rewrite ^/mobilecdn/(.*)$ /$1 break;
+        proxy_pass http://mobilecdn.kugou.com;
+    }
+    #网易MV的数据，详见https://binaryify.github.io/NeteaseCloudMusicApi/
+    location ^~/NeteaseCloudMusicApi/{
+        rewrite ^/NeteaseCloudMusicApi/(.*)$ /$1 break;
+        proxy_pass http://www.cenuon.com:3000;
+    }
+}
+</code></pre>
+
+<p>重启nginx即可</p>
+<pre><code>nginx -s reload
+</code></pre>
+
+<h2>知识梳理</h2>
+<h3>流程图解</h3>
+<p>通过我自己的理解方式，简单地整理了react、redux、react-redux三者之间的关系图，如下：</p>
+<p><img src="relation.png" /></p>
+<h3>通过代码，梳理redux、react-redux</h3>
+<p>注：下面代码只列出搜索功能的关键部分，源码地址：<a href="https://github.com/ScorpionJay/r-music">https://github.com/ScorpionJay/r-music</a></p>
+<h4>1. Provider</h4>
+<p>react-redux提供的<code>Provider</code>组件，可以让容器组件取得<code>state</code>。</p>
+<h5>src/index.js</h5>
+<pre><code>import configureStore from './stores'
+const store = configureStore()
+
+&lt;Provider store={store}&gt;
+    &lt;Router history={browserHistory} routes={routers} /&gt;
+&lt;/Provider&gt;
+</code></pre>
+
+<p>上面代码中，<code>Provider</code>使得<code>Router</code>的所有子组件可以取得<code>state</code>。</p>
+<p><code>import configureStore from './stores'</code>为redux的store，如下：</p>
+<h5>src/store/index.js</h5>
+<pre><code>import reducers from '../reducers/index';
+
+export default function(initialState) {
+    let createStoreWithMiddleware
+
+    // 判断环境是否logger
+    if (process.env.NODE_ENV === 'production') {
+        createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+    }else{
+        //开发环境在console可以看到整个状态树的实时日志
+        const logger = createLogger();
+        createStoreWithMiddleware = applyMiddleware(thunk,logger)(createStore);
+    }
+    let store = createStoreWithMiddleware(reducers, initialState);
+    return store;
+};
+</code></pre>
+
+<h4>2. react：Component</h4>
+<h5>src/containers/search.js</h5>
+<pre><code>import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
+
+import { searchHotAPI,searchResultAPI,clearSearchResultAPI} from '../actions/search'
+
+class Search extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount(){
+    const { dispatch } = this.props
+    dispatch(searchHotAPI())
+  }
+
+  searchEvt(keyword,page=1){
+    const { dispatch } = this.props;
+    keyword = keyword || this.refs.keyword.value
+    if(keyword!=''){
+      dispatch(searchResultAPI(keyword, page));
+    }else{
+      dispatch(clearSearchResultAPI());
+    }
+    this.refs.keyword.value = keyword;
+  }
+
+
+  render() {
+    const { dispatch,controll,search } = this.props;
+    return (
+      &lt;div className='root' style={{fontSize:'1.2rem'}}&gt;
+
+        //...
+
+      &lt;/div&gt;
+    )
+  }
+}
+
+function map(state) {
+  return {
+    search: state.search,
+    controll: state.music.controll
+  }
+}
+
+export default connect(map)(Search)
+</code></pre>
+
+<p>react-redux的<code>connect</code>方法，用于从 UI 组件生成容器组件。</p>
+<p>上面代码中，<code>connect(map)(Search)</code>使得组件<code>Search</code>可以通过<code>props</code>取得<code>map</code>返回的数据。</p>
+<p><code>dispatch(searchHotAPI())</code>和<code>dispatch(clearSearchResultAPI())</code>，获取数据并分发action。</p>
+<h4>3. redux</h4>
+<h5>src/actions/search.js</h5>
+<pre><code>import Config from '../config'
+import { spin,spinHidden } from './spin'
+import api from '../api'
+
+import Storage from '../storage'
+
+//定义常量
+export const SEARCH_HOT = 'SEARCH_HOT'
+export const SEARCH_RESULT = 'SEARCH_RESULT'
+
+//actionCreator,这里是一个函数，返回action对象
+const searchHot = (obj) =&gt; {return {type:SEARCH_HOT, obj}}
+const searchResult = (obj) =&gt; {return {type:SEARCH_RESULT, obj}}
+
+//搜索热门关键字
+export function searchHotAPI(){
+    return async dispatch =&gt; {
+        try{
+            let hots = await api( Config.searchHotAPI );
+            dispatch(searchHot(hots.data.info));
+        } catch(error) {
+            console.log(error);
+        }
+    }
+}
+
+//通过关键字搜索
+export function searchResultAPI(keyword,page){
+    return async dispatch =&gt; {
+        try {
+            let result = await api( Config.searchResultAPI, 'get', {keyword,page} );
+            //搜索历史存到localStorage
+            setSearchHistory(keyword);
+            dispatch(searchResult(result.data.info));
+        } catch(error) {
+            console.log(error);
+        }
+    }
+}
+</code></pre>
+
+<p>上面代码中，<code>searchHot</code>和<code>searchResult</code>都是Action creator，即分别返回一个action。</p>
+<p>action是一个带有type关键字的对象，如<code>{type:SEARCH_HOT, obj}</code>和<code>{type:SEARCH_RESULT, obj}</code>。</p>
+<p><code>searchHotAPI</code>和<code>searchResultAPI</code>分别返回一个获取数据并分发action的异步函数，一般在容器组件里会调用。</p>
+<h5>src/reducer/search.js</h5>
+<pre><code>import { combineReducers } from 'redux'
+import { SEARCH_HOT,SEARCH_RESULT } from '../actions/search'
+
+function hots(state = [], action){
+  switch(action.type) {
+    case SEARCH_HOT:
+      return action.obj;
+    default:
+      return state;
+  }
+}
+
+function result(state = [], action){
+  switch(action.type) {
+    case SEARCH_RESULT:
+      return action.obj;
+    default:
+      return state;
+  }
+}
+
+
+const Reducers = combineReducers({
+  hots,result,
+})
+
+export default Reducers
+</code></pre>
+
+<p>上面代码中，<code>hots</code>函数收到名为<code>SEARCH_HOT</code>的 Action 以后，就返回一个新的 State，作为热门搜索的结果。</p>
+<p>在<code>src/store/index.js</code>中，开发环境下，引入了中间件<code>redux-logger</code>的<code>createLogger</code>，在浏览器console可以观察到每次reducer的结果，如下：</p>
+<p><img src="logger-searchhot.png" /></p>
+<h5>src/reducer/index.js</h5>
+<pre><code>import { combineReducers } from 'redux'
+//...
+import  search from './search'
+
+const reducers = combineReducers({
+  //...
+  search,
+})
+
+export default reducers
+</code></pre>
+
+<p>Reducer 是一个函数，它接受 Action 和当前 State 作为参数，返回一个新的 State，然后View发生变化。
+<code>combineReducers</code>将多个拆分的reducer合并。</p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
