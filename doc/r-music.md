@@ -7,7 +7,7 @@
 	- [技术栈](#技术栈)
 	- [技术栈](#项目结构)
 	- [技术栈](#项目运行)
-- [react、redux、react-redux 知识梳理](#react、redux、react-redux 知识梳理)
+- [知识梳理](#知识梳理)
 
 
 
@@ -216,7 +216,7 @@ proxy，设置代理，是为了解决跨域的问题。
 ![](relation.png)
 
 
-### 通过代码，梳理redux、react-redux
+### 知识梳理
 
 注：下面代码只列出搜索功能的关键部分，源码地址：[https://github.com/ScorpionJay/r-music](https://github.com/ScorpionJay/r-music)
 
